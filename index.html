@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <link rel="stylesheet" href="stylesheet/master.css">
+</head>
+
+<body>
+    <main id="main">
+        <section>
+            <header id="header">
+                <nav>
+                    <figure>
+                        <img src="img/1.svg" alt="">
+                    </figure>
+                    <figure>
+                        <img src="img/2.svg" alt="">
+                    </figure>
+                </nav>
+            </header>
+            <section class="home">
+                <h1 id="name">John Doe</h1>
+                <div class="info">
+                    <p id="_email">l.hazrati78@yahoo.com</p>
+                    <figure class="pic">
+                        <img src="img/3.jpeg" alt="">
+                    </figure>
+                    <ul class="socials">
+                        <li><img src="img/i1.svg" alt=""></li>
+                        <li><img src="img/i2.svg" alt=""></li>
+                        <li><img src="img/i3.svg" alt=""></li>
+                    </ul>
+                </div>
+                <div class="job">
+                    <h2>Art Director</h2>
+                    <p> Based in NL</p>
+                </div>
+                <div class="sec2">
+                    <h2>ABOUT</h2>
+                    <p>With 8+ years of expertise, creates beautiful and functional designs with a keen eye for detail
+                        and dedication to the latest trends and technologies.
+                    </p>
+                </div>
+                <div class="sec3">
+                    <h2>WORK
+                    </h2>
+
+                </div>
+                <div class="psec4">
+                    <div class="sec4">
+                    </div>
+                    <figure>
+                        <img src="img/phone.jpeg" alt="">
+                    </figure>
+                    <div class="psub1">
+                        <p class="sub1">Product Design, UIUX Design, Branding, Visual Design, Art Direction, Concept
+                            Design for Spotify</p>
+                    </div>
+                    <h2 class="pro1">Project Name</h2>
+                </div>
+                <div class="psec5">
+                    <div class="sec5">
+                    </div>
+                    <figure>
+                        <img src="img/green.jpeg" alt="">
+                    </figure>
+                    <div class="psub2">
+                        <p class="sub2">Product Design, UIUX Design, Branding, Visual Design, Art Direction, Concept
+                            Design for Spotify</p>
+                    </div>
+                    <h2 class="pro2">Project Name</h2>
+
+                </div>
+                <div class="psec6">
+                    <div class="sec6">
+                    </div>
+                    <figure>
+                        <img src="img/pink.jpeg" alt="">
+                    </figure>
+                    <div class="psub3">
+                        <p class="sub3">Product Design, UIUX Design, Branding, Visual Design, Art Direction, Concept
+                            Design for Spotify</p>
+                    </div>
+                    <h2 class="pro3">Project Name</h2>
+
+                </div>
+            </section>
+        </section>
+        <div class="scroll">
+        </div>
+    </main>
+    <span id="stNumber"></span>
+</body>
+<script>
+    let main = document.getElementById('main')
+    // let stNumber = document.getElementById('stNumber')
+    let _name = document.getElementById('name')
+    let job = document.getElementsByClassName('job')[0]
+    let _email = document.getElementById('_email')
+    let socials = document.getElementsByClassName('socials')[0]
+    let pic = document.getElementsByClassName('pic')[0]
+    let sec2 = document.getElementsByClassName('sec2')[0]
+    let sec3 = document.getElementsByClassName('sec3')[0]
+    let sec3H2 = document.querySelector('.sec3>h2')
+    let sec4 = document.getElementsByClassName('sec4')[0]
+    let psec4 = document.getElementsByClassName('psec4')[0]
+    let psub1 = document.getElementsByClassName('psub1')[0]
+    let pro1 = document.getElementsByClassName('pro1')[0]
+    let sec5 = document.getElementsByClassName('sec5')[0]
+    let psec5 = document.getElementsByClassName('psec5')[0]
+    let psub2 = document.getElementsByClassName('psub2')[0]
+    let pro2 = document.getElementsByClassName('pro2')[0]
+    let sec6 = document.getElementsByClassName('sec6')[0]
+    let psec6 = document.getElementsByClassName('psec6')[0]
+    let psub3 = document.getElementsByClassName('psub3')[0]
+    let pro3 = document.getElementsByClassName('pro3')[0]
+    main.addEventListener('scroll', (e) => {
+        let st = e.target.scrollTop
+        // stNumber.innerHTML = st
+        _name.style.right = (st * 2) + 'px'
+        job.style.left = (st * 2) + 'px'
+        _email.style.right = (st * 2) + 'px'
+        socials.style.left = (st * 2) + 'px'
+        if (st > 0 && st <= 1000) {
+            pic.style.display = 'flex'
+            pic.style.scale = (st + 2000) / 2000
+        }
+        if ((e.target.scrollTop) >= (sec2.offsetTop)) {
+            pic.style.position = 'absolute'
+            pic.style.top = '135%'
+        } else {
+            pic.style.position = 'fixed'
+            pic.style.top = '285px'
+        }
+        if ((e.target.scrollTop) >= (sec3.offsetTop)) {
+            sec3H2.style.position = 'fixed'
+            sec3H2.style.top = '50%'
+            sec3H2.style.zIndex = '50'
+        } else {
+            sec3H2.style.position = 'absolute'
+            sec3H2.style.top = '50%'
+        }
+        if ((e.target.scrollTop) >= (psec4.offsetTop)) {
+            let x = (st / psec4.offsetTop) - 1
+            sec4.style.opacity = x
+            if (x >= 0.4928772258669166) {
+                psub1.style.position = 'fixed'
+                psub1.style.right = ((st / 3.7)) + 'px'
+                pro1.style.position = 'fixed'
+                pro1.style.left = -((st / 2)) + 'px'
+            } else {
+                psub1.style.position = 'absolute'
+                psub1.style.right = '0'
+                pro1.style.position = 'absolute'
+                pro1.style.left = '0'
+            }
+        }
+        if ((e.target.scrollTop) >= (psec5.offsetTop)) {
+            let x = (st / psec5.offsetTop) - 1
+            sec5.style.opacity = x
+            if (x >= 0.2928852643419573) {
+                psub2.style.position = 'fixed'
+                psub2.style.top = '70%'
+                psub2.style.right = ((st / 6.7)) + 'px'
+                pro2.style.position = 'fixed'
+                pro2.style.left = -((st / 3.6)) + 'px'
+                pro2.style.top = '70%'
+            } else {
+                psub2.style.position = 'absolute'
+                psub2.style.right = '0'
+                pro2.style.position = 'absolute'
+                pro2.style.left = '0'
+            }
+        }
+        if ((e.target.scrollTop) >= (psec6.offsetTop)) {
+            let x = (st / psec6.offsetTop) - 1
+            sec6.style.opacity = x
+            console.log(x);
+            if (x >= 0.21892575928008995) {
+                psub3.style.position = 'fixed'
+                psub3.style.top = '70%'
+                psub3.style.right = ((st / 10)) + 'px'
+                pro3.style.position = 'fixed'
+                pro3.style.left = -((st / 8)) + 'px'
+                pro3.style.top = '70%'
+            } else {
+                psub3.style.position = 'absolute'
+                psub3.style.right = '0'
+                pro3.style.position = 'absolute'
+                pro3.style.left = '0'
+            }
+        }
+
+    })
+</script>
+
+</html>
